@@ -31,3 +31,11 @@ wss.on('connection', function (ws) {
             }
         }
     });
+
+    ws.onmessage = function(e) {
+        var data = JSON.parse(e.data);
+        var messages = document.getElementById('messages');
+        var message = document.createElement("li");
+        message.innerHTML = data.message;
+        messages.appendChild(message);
+    }
