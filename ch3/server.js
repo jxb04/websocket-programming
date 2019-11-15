@@ -7,7 +7,8 @@ var WebSocketServer = require('ws').Server,
 
    wss.on('connection', function(ws) {
        var client_uuid = uuid.v4();
-       console.log('client connected');
+       clients.push(("id": client_uuid, "ws": ws));
+       console.log('client [%s] connected', client_uuid);
        ws.on('message', function(message) {
            console.log(message);
        });
