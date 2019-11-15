@@ -10,8 +10,16 @@
     <script src="http://bit.ly/cdn-bootstrap-jq"></script>
     <script>
         var ws = new WebSocket("ws://localhost:8181");
+        var nickname = "";
         ws.onopen = function (e) {
             console.log('Connection to server opened');
+        }
+        funciton appendLog(nickname, message) {
+            var messages = document.getElementById('messages');
+            var messageElem = document.createElement("li");
+            var message_text = "[" + nickname + "] - " + message;
+            messageElem.innerHTML = message_text;
+            messages.appendChild(messageElem);
         }
 
         function sendMessage() {
